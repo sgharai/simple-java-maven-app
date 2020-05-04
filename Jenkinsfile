@@ -1,14 +1,10 @@
 pipeline {
-  agent none
+  agent { label 'master' }
   stages {
     stage('Build Maven Project') {
-      agent {
-          docker { image 'maven:3-alpine' }
-      }
       steps {
         sh 'mvn -B -DskipTests clean package'
       }
     }
-
   }
 }
